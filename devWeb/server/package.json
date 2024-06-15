@@ -1,19 +1,19 @@
 {
-  "name": "code-mentor-server",
+  "name": "task-server",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.jsx",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
-
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "mongoose": "^5.13.8",
-    "socket.io": "^4.1.3"
+    "socket.io": "^4.7.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
