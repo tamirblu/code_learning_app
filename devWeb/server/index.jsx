@@ -4,8 +4,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const CodeBlock = mongoose.model('CodeBlock');
 const app = express();
-const http = require('http');
-const server = http.createServer(app);
+const https = require('https');
+const server = https.createServer(app);
 const uriMongo = "mongodb+srv://tamirblumberg:UOJdIUi6m6CaaxNg@cluster-moveo.yoerpwd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-Moveo"
 
 // Define the id and the mentor for each room
@@ -47,7 +47,7 @@ const cors = require('cors');
 app.use(cors());
 const io = socketIo(server, {
     cors: {
-        origin: "https://moveo-task-6z9p91jaz-tamirs-projects-605afe5b.vercel.app/",
+        origin: "https://moveo-task-sajz.vercel.app/",
         methods: ["GET", "POST"],
         credentials: true
     }
