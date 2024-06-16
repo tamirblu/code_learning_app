@@ -10,7 +10,23 @@
     "build-server": "cd server && npm run build",
     "build": "npm run build-client && npm run build-server"
   },
+
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mongoose": "^5.13.8",
+    "socket.io": "^4.7.5",
+    "vite": "^5.2.0"
+  },
   "devDependencies": {
-    "concurrently": "^6.2.1"
+    "concurrently": "^6.2.1",
+    "nodemon": "^2.0.15"
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6"
   }
 }
