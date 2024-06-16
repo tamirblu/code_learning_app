@@ -5,3 +5,5 @@ Steps to run the program on your local computer:
 2. dir:webDev/server + run - npm install
 3. dir:webDev/client + run - npm run dev
 4. dir:webDev/server + run - npm start
+
+*have fun*
