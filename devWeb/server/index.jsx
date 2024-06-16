@@ -4,8 +4,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const CodeBlock = mongoose.model('CodeBlock');
 const app = express();
-const https = require('https');
-const server = https.createServer(app);
+const http = require('http');
+const server = http.createServer(app);
 const uriMongo = "mongodb+srv://tamirblumberg:UOJdIUi6m6CaaxNg@cluster-moveo.yoerpwd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-Moveo"
 
 // Define the id and the mentor for each room
@@ -47,7 +47,7 @@ const cors = require('cors');
 app.use(cors());
 const io = socketIo(server, {
     cors: {
-        origin: "https://moveo-task-sajz.vercel.app/",
+        origin: "http://localhost:3000",
         methods: ["GET", "POST"],
         credentials: true
     }
@@ -106,6 +106,6 @@ io.on('connection', (socket) => {
         console.log('A user disconnected');
     });
 });
-server.listen(process.env.PORT || 5000, () => {
+server.listen( 5000, () => {
     console.log('Server is running on port 5000');
 });
