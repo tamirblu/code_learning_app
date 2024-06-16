@@ -13,7 +13,7 @@ const uriMongo = "mongodb+srv://tamirblumberg:UOJdIUi6m6CaaxNg@cluster-moveo.yoe
 mongoose.connect(uriMongo, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
-
+//
 
 
 const socketIo = require('socket.io');
@@ -38,29 +38,31 @@ let roomMentors = {};
 
 io.on('connection', (socket) => {
     console.log('A client connected: ' + socket.id);
-    socket.on('getCodeBlock', async (data) => {
-        try {
-            console.log('getCodeBlocks ', data.id);
-            let codeBlock = await CodeBlock.findById(data.id);
-            if (!codeBlock) {
-                codeBlock = new CodeBlock({ index: data.id,title:'a' ,code: 'default code' }); // Replace 'default code' with your actual default code
-                await codeBlock.save();
-            }
-            socket.emit('codeBlock', codeBlock);
-        }
-        catch (err) {
-            console.error(err);
-        }
-
-    });
+    // socket.on('getCodeBlock', async (data) => {
+    //     try {
+    //         console.log('getCodeBlocks ', data.id);
+    //         let codeBlock = await CodeBlock.findById(data.id);
+    //         if (!codeBlock) {
+    //             codeBlock = new CodeBlock({ index: data.id,title:'a' ,code: 'default code' }); // Replace 'default code' with your actual default code
+    //             await codeBlock.save();
+    //         }
+    //         socket.emit('codeBlock', codeBlock);
+    //     }
+    //     catch (err) {
+    //         console.error(err);
+    //     }
+    //
+    // });
     socket.on('join', async (data) => {
         try {
             console.log('data.id: ', data.id);
             idInput = data.id;
-            // const codeBlock = 'codeBlock Test \n const i = 5';
-            const codeBlock = await CodeBlock.findById(data.id);
+            const codeBlock = 'codeBlock Test \n const i = 5';
+            // const codeBlock = await CodeBlock.findById(data.id);
 
-            if (!codeBlock) return;
+            if (!codeBlock) return
+                // codeBlock = new CodeBlock({ index: data.id,title:'a' ,code: 'default code' }); // Replace 'default code' with your actual default code
+                // await codeBlock.save();
 
             // Make the client join a room that corresponds to the code block's ID
             socket.join(data.id);

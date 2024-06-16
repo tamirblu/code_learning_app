@@ -8,7 +8,13 @@ const CodeBlockSchema = new mongoose.Schema({
     title: String,
     code: String
 });
-
+CodeBlockSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        returnedObject.id = returnedObject._id.toString()
+        delete returnedObject._id
+        delete returnedObject.__v
+    }
+})
 const CodeBlock = mongoose.model('CodeBlock', CodeBlockSchema);
 
 module.exports = CodeBlock;

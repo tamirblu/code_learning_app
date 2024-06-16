@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/default.css';
-import axios from "axios";
+// import axios from "axios";
 
 const CodeBlock = () => {
     const { id } = useParams();
