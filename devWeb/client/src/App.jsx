@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Lobby from './Lobby.jsx';
 import CodeBlock from "./CodeBlock.jsx";
+// Import the NavBar component
 import NavBar from './components/NavBar.jsx';
 
 function App() {
@@ -19,18 +19,4 @@ function App() {
     );
 }
 
-
-//
-// export default App;
-// import React from 'react';
-
-// function App() {
-//     console.log('App');
-//     return (
-//         <div>
-//             <h1>App</h1>
-//         </div>
-//     );
-// }
-//
 export default App;
