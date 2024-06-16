@@ -33,7 +33,7 @@ const CodeBlock = () => {
     // useEffect hook to handle socket.io connections and events
     useEffect(() => {
         // Connect to the socket.io server
-        socket = io.connect('http://127.0.0.1:5000');
+        socket = io.connect('https://moveotask-production-0e0c.up.railway.app/');
         // Emit 'join' event with the id
         socket.emit('join', { id });
         socket.on('role', (role) => {

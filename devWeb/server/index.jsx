@@ -47,7 +47,7 @@ const cors = require('cors');
 app.use(cors());
 const io = socketIo(server, {
     cors: {
-        origin: "http://127.0.0.1:3000",
+        origin: "https://moveo-task-6z9p91jaz-tamirs-projects-605afe5b.vercel.app/",
         methods: ["GET", "POST"],
         credentials: true
     }
