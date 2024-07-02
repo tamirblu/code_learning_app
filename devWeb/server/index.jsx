@@ -1,13 +1,14 @@
 // Import the required modules
 require('./models/CodeBlock.jsx');
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const CodeBlock = mongoose.model('CodeBlock');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
-const uriMongo = "mongodb+srv://tamirblumberg:UOJdIUi6m6CaaxNg@cluster-moveo.yoerpwd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-Moveo"
-
+const uriMongo =process.env.MONGODB_URL
 // Define the id and the mentor for each room
 let idInput = null;
 let roomMentors = {};
@@ -69,7 +70,8 @@ io.on('connection', (socket) => {
                 codeBlock.code = defaultCodeBlocks[data.id].code;
                 codeBlock.title = defaultCodeBlocks[data.id].title;
             if (!codeBlock.code)
-                codeBlock = new CodeBlock({ index: data.id, title: defaultCodeBlocks[data.id].title, code:defaultCodeBlocks[data.id].code });
+                codeBlock.code = defaultCodeBlocks[data.id].code;
+                // codeBlock = new CodeBlock({ index: data.id, title: defaultCodeBlocks[data.id].title, code:defaultCodeBlocks[data.id].code });
             await codeBlock.save();
             // Make the client join a room that corresponds to the code block's ID
             socket.join(data.id);

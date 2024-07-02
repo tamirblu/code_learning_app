@@ -12,7 +12,8 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "mongoose": "^5.13.8",
-    "socket.io": "^4.7.5"
+    "socket.io": "^4.7.5",
+    "dotenv": "^10.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

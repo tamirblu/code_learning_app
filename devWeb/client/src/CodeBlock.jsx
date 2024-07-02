@@ -3,14 +3,14 @@ import io from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/default.css';
-// Define a variable to store the socket
-let socket;
 
 const CodeBlock = () => {
     // useParams hook to get the id from the URL
     const { id } = useParams();
     // useRef hook to reference the code block for syntax highlighting
     const codeRef = useRef(null);
+    // useRef hook to reference the socket.io connection
+    const socket = useRef(null);
     // useState hooks to manage state variables
     const [role, setRole] = useState('');
     const [code, setCode] = useState('');
@@ -33,39 +33,40 @@ const CodeBlock = () => {
     // useEffect hook to handle socket.io connections and events
     useEffect(() => {
         // Connect to the socket.io server
-        socket = io.connect('http://localhost:5000');
+        socket.current = io.connect('http://localhost:5000');
         // Emit 'join' event with the id
-        socket.emit('join', { id });
-        socket.on('role', (role) => {
+        socket.current.emit('join', { id });
+        socket.current.on('role', (role) => {
             setRole(role);
             setIsEditable(role === 'student');
         });
 
-        socket.on('codeBlock', (block) => {
+        socket.current.on('codeBlock', (block) => {
             setCode(block.code);
             setTitle(block.title);
         });
 
-        socket.on('codeUpdate', (newCode) => {
-            setCode(newCode);
+        socket.current.on('mentorDisconnected', () => {
+            setIsEditable(false);
         });
 
-        socket.on('mentorDisconnected', () => {
-            setIsEditable(false);
+        socket.current.on('codeUpdate', (newCode) => {
+                setCode(newCode);
         });
 
         // Disconnect from the socket.io server when the component unmounts
         return () => {
-            socket.disconnect();
+            socket.current.disconnect();
         };
 
     }, [id]);
-
+    // let codeSec;
     // Function to handle code changes
     const handleChange = (event) => {
         const newCode = event.target.value;
+        // codeSec = event.target.value;
         setCode(newCode);
-        socket.emit('codeChange', { id, newCode });
+        socket.current.emit('codeChange', { id, newCode });
     };
 
 
