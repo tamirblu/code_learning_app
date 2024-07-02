@@ -6,6 +6,7 @@ step 1:
 ask for .env file.
 
 step 2:
+
 a. dir:webDev/client + run - npm install
 
 b. dir:webDev/server + run - npm install
