@@ -1,3 +1,8 @@
+deployment link:
+http://ec2-13-48-58-239.eu-north-1.compute.amazonaws.com/
+
+Note: The website is currently down as deployment with Amazon can be pricey.
+
 Steps to run the program on your local computer:
 
 step 1:
